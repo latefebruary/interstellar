@@ -1,0 +1,13 @@
+AllCops:
+  TargetRubyVersion: 2.7.5
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+    - bin/*
+    - config/*
+    - config/environments/*
+    - config/initializers/*
+    - config/locales/*
+
+Style/Documentation:
+  Enabled: false
