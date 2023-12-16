@@ -5,12 +5,12 @@ class AuthController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def login
-    @user = User.find_by!(username: login_params[:username])
-    if @user.authenticate(login_params[:password])
-      @token = encode_token(user_id: @user.id)
+    user = User.find_by!(username: login_params[:username])
+    if user.authenticate(login_params[:password])
+      token = encode_token(user_id: user.id)
       render json: {
-        user: @user.username,
-        token: @token
+        user: user.username,
+        token: token
       }, status: :accepted
     else
       render json: { message: 'Incorrect password' }, status: :unauthorized
