@@ -6,10 +6,10 @@ class UsersController < ApplicationController
 
   def create
     user = User.create!(user_params)
-    @token = encode_token(user_id: user.id)
+    token = encode_token(user_id: user.id)
     render json: {
       username: user.username,
-      token: @token
+      token: token
     }, status: :created
   end
 

@@ -3,8 +3,8 @@
 class ArticlesController < ApplicationController
   # GET /api/articles
   def index
-    @articles = Article.order(published_at: :desc).limit(per_page).offset(page)
+    articles = Article.order(published_at: :desc).limit(per_page).offset(page)
 
-    render json: @articles
+    render json: articles
   end
 end
